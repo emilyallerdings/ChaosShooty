@@ -69,6 +69,7 @@ func _process(delta):
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		energy -= 50
+		$AudioStreamPlayer.play()
 		#BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position)
 		BulletManager.shotgun(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 10, 25, 500, 0)
 		DebugDraw2D.line(self.position, self.position + (vec_to_crosshair * self.global_position.distance_to(crosshair.global_position)), Color.RED, 3, 0.5)
