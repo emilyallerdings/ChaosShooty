@@ -20,7 +20,14 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.has_method("hit"):
-		body.hit()
+		
+		var hit_event = HitEvent.new()
+		hit_event.knockback_dir = self.velocity.normalized()
+		hit_event.knockback_strength = 50
+		hit_event.shooter = self.shooter
+		hit_event.damage = 10
+		
+		body.hit(hit_event)
 		
 	
 	

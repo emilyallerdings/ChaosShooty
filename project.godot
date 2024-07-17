@@ -30,6 +30,10 @@ window/stretch/scale=1.5
 window/stretch/scale_mode="integer"
 window/vsync/vsync_mode=0
 
+[dotnet]
+
+project/assembly_name="ChaosShooty"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/debug_menu/plugin.cfg", "res://addons/shaker/plugin.cfg")

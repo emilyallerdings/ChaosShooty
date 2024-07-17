@@ -11,12 +11,15 @@ var current_state: EnemyState = EnemyState.MOVEMENT_STATE
 
 
 
+var extra_velocity = Vector2.ZERO
+
 var enemy_ID = 1
 var nav_tick = 0
 
 @export var isattacking = false;
 var attackSpeed = 200;
 var direction
+var health = 100
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -54,15 +57,16 @@ func _physics_process(delta):
 	
 	velocity = velocity.lerp(Vector2.ZERO, delta*5)
 	
+	velocity += extra_velocity
+	
+	extra_velocity = extra_velocity.lerp(Vector2.ZERO, delta*5)
+	
 	var collision = move_and_collide(velocity * delta)
 	if collision:
 		current_state = EnemyState.COLLISION
 		velocity = velocity.bounce(collision.get_normal())
-		#if collision.get_collider() == player:
-			#velocity = velocity.bounce(collision.get_normal())
-		#else:
-			#velocity = velocity.slide(collision.get_normal())
-			
+
+
 func DirectionProcess(delta):
 	
 	var next_position = nav_agent.get_next_path_position()
@@ -84,9 +88,19 @@ func _on_timer_timeout():
 	pass # Replace with function body.
 
 
+func handle_damage(damage):
+	health -= damage
+	print(health)
+	if health <= 0:
+		queue_free()
 
 
 func _on_attack_timer_timeout():
 	velocity = Vector2.ZERO
 	current_state = EnemyState.MOVEMENT_STATE
 	pass # Replace with function body.
+	
+func hit(hitevent:HitEvent):
+	extra_velocity += hitevent.knockback_dir * hitevent.knockback_strength
+	handle_damage(hitevent.damage)
+	return

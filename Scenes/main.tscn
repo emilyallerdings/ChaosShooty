@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dg2ooau0vrcse"]
+[gd_scene load_steps=19 format=3 uid="uid://dg2ooau0vrcse"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_e5dyd"]
 [ext_resource type="Texture2D" uid="uid://cdcdlyw8f1087" path="res://assets/Dark_lvl0.png" id="2_qmbir"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://d3p25bspfro3v" path="res://assets/wall.png" id="6_krww1"]
 [ext_resource type="PackedScene" uid="uid://c60tvy3hgo56j" path="res://Scenes/player.tscn" id="7_abgl2"]
 [ext_resource type="PackedScene" uid="uid://dwxko5gcwd3w4" path="res://Scenes/Enemy.tscn" id="8_aggf8"]
+[ext_resource type="Script" path="res://Script/EnemySpawner.gd" id="9_rykgk"]
 
 [sub_resource type="Environment" id="Environment_k3g3d"]
 background_mode = 3
@@ -379,3 +380,13 @@ collision_mask = 4
 position = Vector2(799, 133)
 collision_layer = 15
 collision_mask = 15
+
+[node name="EnemySpawner" type="Node2D" parent="."]
+position = Vector2(981, 102)
+script = ExtResource("9_rykgk")
+
+[node name="Timer" type="Timer" parent="EnemySpawner"]
+wait_time = 5.0
+autostart = true
+
+[connection signal="timeout" from="EnemySpawner/Timer" to="EnemySpawner" method="_on_timer_timeout"]
