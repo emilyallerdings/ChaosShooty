@@ -14,7 +14,7 @@ radius = 32.249
 modulate = Color(1, 3, 3, 1)
 scale = Vector2(0.15, 0.15)
 collision_layer = 8
-collision_mask = 4
+collision_mask = 32
 script = ExtResource("1_3wtfd")
 
 [node name="Icon" type="Sprite2D" parent="."]
