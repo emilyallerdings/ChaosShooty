@@ -3,13 +3,13 @@ class_name Player
 
 @onready var crosshair = $Crosshair
 @onready var energy_bar = $CanvasLayer/EnergyBar
-@onready var camera_2d = $Camera2D
+#@onready var camera_2d = $Camera2D
 #@onready var anim_sprite = $AnimSprite
 
 var vec_to_crosshair
 
 const BULLET = preload("res://Scenes/bullet.tscn")
-const SPEED = 380.0
+const SPEED = 300.0
 const MAX_ENERGY:float = 100
 
 var energy:float = MAX_ENERGY
@@ -39,7 +39,9 @@ func _physics_process(delta):
 	velocity += direction
 	
 	velocity += extra_velocity
-	extra_velocity = extra_velocity.lerp(Vector2.ZERO, delta * 8)
+	extra_velocity = extra_velocity.lerp(Vector2.ZERO, delta * 12)
+	
+	
 	
 	move_and_slide()
 	#self.position = position.round()
@@ -65,6 +67,16 @@ func _process(delta):
 		$Rat.scale.x = -1
 		$Rat.look_at(mouse_pos)
 	#camera_2d.global_position = camera_2d.global_position.round()
+	
+	var direction = Input.get_vector("left", "right", "up", "down")
+	if direction.x > 0:
+		$SpriteUpper.play("front_right")
+		$Arm.play("front_right")
+	elif direction.x < 0:
+		$SpriteUpper.play("front_left")
+		$Arm.play("front_left")
+	elif direction.x == 0:
+		$SpriteUpper.stop()
 	
 func _input(event):
 	if event.is_action_pressed("shoot"):

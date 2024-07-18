@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://Script/EnemyAI.gd" id="1_kknp0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n18q4"]
-size = Vector2(45, 41)
+size = Vector2(29, 28)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 2
@@ -13,11 +13,11 @@ script = ExtResource("1_kknp0")
 speed = 50
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("1_e4322")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.5, 0.5)
+position = Vector2(0.5, 0)
 shape = SubResource("RectangleShape2D_n18q4")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
