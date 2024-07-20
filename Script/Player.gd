@@ -85,4 +85,8 @@ func _input(event):
 		#BulletManager.create_bullet(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 25, self.global_position)
 		BulletManager.shotgun(self, BulletManager.CollisionLayer.ENEMY, vec_to_crosshair*1500, 15, 35, 500, 0)
 		DebugDraw2D.line(self.position, self.position + (vec_to_crosshair * self.global_position.distance_to(crosshair.global_position)), Color.RED, 3, 0.5)
-		extra_velocity += vec_to_crosshair * -1 * 1800
+		#extra_velocity += vec_to_crosshair * -1 * 1800
+
+func set_combatStatus(player_stat: Player_Status):
+	print("upgrades reacived")
+	

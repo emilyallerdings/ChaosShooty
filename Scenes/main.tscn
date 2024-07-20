@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://dg2ooau0vrcse"]
+[gd_scene load_steps=9 format=3 uid="uid://dg2ooau0vrcse"]
 
 [ext_resource type="Script" path="res://Script/main.gd" id="1_e5dyd"]
 [ext_resource type="PackedScene" uid="uid://vgv1eqkdo6ju" path="res://room.tscn" id="2_nmk2p"]
 [ext_resource type="PackedScene" uid="uid://c60tvy3hgo56j" path="res://Scenes/player.tscn" id="7_abgl2"]
+[ext_resource type="PackedScene" uid="uid://dnky713twoylc" path="res://Scenes/PowerIteams.tscn" id="7_ivppe"]
 [ext_resource type="PackedScene" uid="uid://dwxko5gcwd3w4" path="res://Scenes/Enemy.tscn" id="8_aggf8"]
 [ext_resource type="Script" path="res://Script/EnemySpawner.gd" id="9_rykgk"]
 [ext_resource type="Script" path="res://Scenes/Camera2D.gd" id="10_6eeyb"]
@@ -42,5 +43,8 @@ collision_mask = 4
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("10_6eeyb")
+
+[node name="PowerIteams" parent="." instance=ExtResource("7_ivppe")]
+position = Vector2(225, 212)
 
 [connection signal="timeout" from="Room/EnemySpawner/Timer" to="Room/EnemySpawner" method="_on_timer_timeout"]

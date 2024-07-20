@@ -1,7 +1,3 @@
-shader_type canvas_item;
-render_mode unshaded;
-
-// Texture must have 'Filter'-flag enabled!
 
 // Automatic smoothing
 // independent of geometry and perspective
